@@ -16,11 +16,15 @@ def json(file_path):
         print(f"Niepoprawny format: {e}")
         sys.exit(1)
 
+def json_zapis(data, file_path):
+    with open (file_path, 'w') as file:
+        json.dumb(data, file)
 
 if __name__ == "__main__":
     pathFile1, pathFile2 = parsowanie()
     data = json(pathFile1)
     print(data)
+    json_zapis(data, pathFile2)
 
 
 
