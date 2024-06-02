@@ -44,6 +44,10 @@ def xml(file_path):
         print("Niepoprawny format.")
         sys.exit(1)
 
+def xml_zapis(root, file_path):
+    tree = ET.ElementTree(root)
+    tree.write(file_path)
+
 if __name__ == "__main__":
     pathFile1, pathFile2 = parsowanie()
 
@@ -59,8 +63,10 @@ if __name__ == "__main__":
 
     if pathFile2.endswitch('.json'):
         son_zapis(data, pathFile2)
-    elif pathFile2.endwitch('.yaml'):
+    elif pathFile2.endswitch('.yaml'):
         yaml_zapis(data, pathFile2)
+    elif pathFile2.endwitch('.xml'):
+        xml_zapis(root, pathFile2)
     else:
         print("Niepoprawny format")
         sys.exit(1)
