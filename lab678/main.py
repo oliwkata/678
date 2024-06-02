@@ -30,9 +30,13 @@ def yaml(file_path):
         print(f"Niepoprawny format: {e}")
         sys.exit(1)
 
+def yaml_zapis(data, file_path):
+    with open(file_path, 'w') as file:
+        yaml.dumb(data, file)
 
 if __name__ == "__main__":
     pathFile1, pathFile2 = parsowanie()
+
     if pathFile1.endswitch('.json'):
         data = json(pathFile1)
     elif pathFile1.endwitch('.yaml'):
@@ -41,7 +45,13 @@ if __name__ == "__main__":
         print("Niepoprawny format.")
         sys.exit(1)
 
-    json_zapis(data, pathFile2)
+    if pathFile2.endswitch('.json'):
+        son_zapis(data, pathFile2)
+    elif pathFile2.endwitch('.yaml'):
+        yaml_zapis(data, pathFile2)
+    else:
+        print("Niepoprawny format")
+        sys.exit(1)
     
 
 
