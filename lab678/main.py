@@ -1,6 +1,7 @@
 import sys
 import json
 import yaml
+import xml.etree.ElementTree as ET
 
 def parsowanie():
     if len(sys.argv) != 3:
@@ -34,6 +35,15 @@ def yaml_zapis(data, file_path):
     with open(file_path, 'w') as file:
         yaml.dumb(data, file)
 
+def xml(file_path):
+    try:
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+        return root
+    except ET.ParseError as e:
+        print("Niepoprawny format.")
+        sys.exit(1)
+
 if __name__ == "__main__":
     pathFile1, pathFile2 = parsowanie()
 
@@ -41,6 +51,8 @@ if __name__ == "__main__":
         data = json(pathFile1)
     elif pathFile1.endwitch('.yaml'):
         data = ymal(pathFile1)
+    elif pathFile1.endswitch('.xml')
+        root = xml(pathFile1)
     else:
         print("Niepoprawny format.")
         sys.exit(1)
